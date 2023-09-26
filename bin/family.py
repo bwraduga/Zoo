@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from address import ZooAddress
+from address import ZooAddressTreeNode
 
 
 class Family(Enum):
@@ -13,8 +13,8 @@ class Family(Enum):
     @property
     def address(self):
         address = {
-            Family.ELEPHANT: ZooAddress(100, "Savanna", "huge area behind the entrance on the left"),
-            Family.RHINO: ZooAddress(101, "Savanna", "in front of the penguin pool"),
-            Family.GIRAFFE: ZooAddress(102, "Savanna", "behind the penguin pool"),
+            Family.ELEPHANT: ZooAddressTreeNode(100, "Savanna", "huge area behind the entrance on the left"),
+            Family.RHINO: ZooAddressTreeNode(101, "Savanna", "in front of the penguin pool"),
+            Family.GIRAFFE: ZooAddressTreeNode(102, "Savanna", "behind the penguin pool"),
         }
         return address[self]

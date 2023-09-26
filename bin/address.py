@@ -1,9 +1,12 @@
 
-class ZooAddress:
-    def __init__(self, home_id, section, desc):
-        self.home_id = home_id
-        self.section = section
+class ZooAddressTreeNode:
+    def __init__(self, name, desc):
+        self.name = name
         self.desc = desc
+        self.children = []
 
-    def __str__(self):
-        return f"Zoo Address - Section: {self.section}, {self.desc}"
+    def __str__(self): # переписать вывод адреса ( по дереву )
+        return f"Zoo Address: {self.name}, {self.desc}"
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
