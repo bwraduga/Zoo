@@ -27,22 +27,18 @@ class ZooFactory:
         return cls._instance
 
     def build(self, name):
-        result = Zoo(name)
-        my_list = {}
 
-        if name == "San Francisco Zoo":
-            my_list = {Elephant("Masha", 1001),
+        result = Zoo(name)
+        san_francisco_animals = {Elephant("Masha", 1001),
                        Elephant("Dasha", 2002),
                        Elephant("Pasha", 500),
                        Rhino("Dima", 2002),
                        Giraffe("Mark", 1500)}
-        elif name == "Oakland Zoo":
-            my_list = {Elephant("Igor", 2000),
+        oakland_animals = {Elephant("Igor", 2000),
                        Elephant("Ilya", 3000),
                        Rhino("Sara", 600),
                        Rhino("Ian", 1200)}
-        elif name == "San Diego Zoo":
-            my_list = {Elephant("Bella", 1379),
+        san_diego_animals = {Elephant("Bella", 1379),
                        Elephant("Max", 2568),
                        Elephant("Charlie", 3110),
                        Rhino("Daisy", 1923),
@@ -54,5 +50,15 @@ class ZooFactory:
                        Giraffe("Oliver", 3300),
                        Giraffe("Luna", 3682)}
 
-        result.dictionary.add_list_to_inventory(my_list)
+        zoo_animals_mapping = {
+            "San Francisco Zoo": san_francisco_animals,
+            "Oakland Zoo": oakland_animals,
+            "San Diego Zoo": san_diego_animals,
+        }
+
+        if name not in zoo_animals_mapping:
+            raise ValueError(f"Unknown zoo name: {name}")
+
+        result.dictionary.add_list_to_inventory(zoo_animals_mapping[name])
+
         return result
