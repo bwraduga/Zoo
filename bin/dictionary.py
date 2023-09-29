@@ -1,11 +1,12 @@
-from address import ZooAddressTreeNode
+from address import IAddress
 from family import Family
 
 
 class Dictionary:
     def __init__(self):
         self.inventory = {}
-        self.addresses = ZooAddressTreeNode("zoo", "")
+        self.addresses = IAddress("zoo", "")
+        self.address_book = {}
 
     def __str__(self):
         return '\n'.join(map(str, self.get()))
@@ -33,6 +34,17 @@ class Dictionary:
         for member in member_list:
             self.add_to_inventory(member)
 
-    def add_to_address(self, address_node):
-        self.addresses.add_child(address_node)
+   # def add_to_address(self, address_node):
+    #    self.addresses.add_child(address_node)
 
+# TODO fix
+    # def add_resident(self, address_node, resident_name):
+        # Assuming each resident name is unique
+    #     self.address_book[resident_name] = address_node
+    #    address_node.resident = resident_name
+
+    def get_address_by_resident_name(self, resident_name):
+        node = self.address_book.get(resident_name)
+        if node:
+            return node
+        return None

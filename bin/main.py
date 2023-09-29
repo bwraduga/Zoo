@@ -1,26 +1,24 @@
 from ZooFactory import ZooFactory
+from family import Family
 from zoo import Zoo
 
 
-my_zoo = ZooFactory().build("San Francisco Zoo")
+sf_zoo = ZooFactory().build("San Francisco Zoo")
+oa_zoo = ZooFactory().build("Oakland Zoo")
 
 
-# wrong - same for all zoos
-print('\n', ">>GUIDE ", my_zoo.name)
-print(my_zoo.dictionary)
+
+print(sf_zoo.dictionary.get_address_by_resident_name(Family.ELEPHANT))
+
+print('\n', ">>GUIDE", sf_zoo.name)
+print(sf_zoo.get_addresses())
 
 
-print('\n', ">>GUIDE 2 ", my_zoo.name)
-print(my_zoo.get_addresses())
+print('\n', ">>GUIDE", oa_zoo.name)
+print(oa_zoo.get_addresses())
 
-
-# wrong - same for all zoos
-print('\n', ">>FAMILIES<<")
-print('\n'.join(map(str, my_zoo.dictionary.get_families())))
-
-
-print('\n', ">>LIST ", my_zoo.name)
-print(my_zoo.get_inventory())
+print('\n', ">>LIST ", sf_zoo.name)
+print(sf_zoo.get_inventory())
 
 
 

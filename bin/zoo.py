@@ -16,9 +16,13 @@ class Zoo:
         return '\n'.join(result)
 
     def get_addresses(self, node=None, level=0):
+
         if node is None:
             node = self.dictionary.addresses
+
         result = "\t" * level + node.name + ': '+ node.desc + "\n"
-        for child in node.children:
-            result += self.get_addresses(child, level + 1)
+
+        if node.get_type() == "node":
+            for child in node.children:
+                result += self.get_addresses(child, level + 1)
         return result
